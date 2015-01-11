@@ -82,8 +82,6 @@ class TransactionController extends Controller
         ]);
 
         if (trim($transactionParams->returnCode) !== '00') {
-            die('transaction bad return code: '.trim($transactionParams->returnCode));
-
             // FAILURE
 
             $response = new Response('transaction failure');
