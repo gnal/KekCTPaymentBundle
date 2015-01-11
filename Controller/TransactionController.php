@@ -46,7 +46,8 @@ class TransactionController extends Controller
         ]);
 
         if ($response->returnCode === '5000') {
-            $url = 'https://test.ctpaiement.com/redirect/Redirect?SecureID='.$response->secureID.'&SecureTYPE=GET';
+            $prefix = $this->get('kernel')->getEnvironment() === 'dev' ? 'test' : 'www';
+            $url = 'https://'.$prefix.'.ctpaiement.com/redirect/Redirect?SecureID='.$response->secureID.'&SecureTYPE=GET';
 
             return $this->redirect($url);
         } else {
