@@ -24,5 +24,9 @@ class KekCTPaymentExtension extends Extension
 
         $loader = new Loader\XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.xml');
+
+        $container->setParameter('kek_ct_payment.wsdl', $config['wsdl']);
+        $container->setParameter('kek_ct_payment.merchant_number', $config['merchant_number']);
+        $container->setParameter('kek_ct_payment.company_number', $config['company_number']);
     }
 }

@@ -18,7 +18,7 @@ class TransactionController extends Controller
      */
     public function step1Action()
     {
-        $soapClient = new \SoapClient('https://test.ctpaiement.com/ws2014/PaymentTransactionV2200.wsdl',
+        $soapClient = new \SoapClient($this->container->getParameter('kek_ct_payment.wsdl'),
             [
                 'location' => 'http://localhost:8080',
                 'trace' => true,
@@ -28,8 +28,8 @@ class TransactionController extends Controller
 
         $response = $soapClient->__soapCall('redirectNewSession', [
             'RedirectNewSession' => [
-                'companyNumber' => '00214',
-                'merchantNumber' => '00999240',
+                'companyNumber' => $this->container->getParameter('kek_ct_payment.company_number'),
+                'merchantNumber' => $this->container->getParameter('kek_ct_payment.merchant_number'),
                 'customerNumber' => '00000000',
                 'amount' => $this->getRequest()->query->get('amount'),
                 'billNumber' => $this->getRequest()->query->get('billNumber'),
@@ -62,7 +62,7 @@ class TransactionController extends Controller
     {
         // get transaction params
 
-        $soapClient = new \SoapClient('https://test.ctpaiement.com/ws2014/PaymentTransactionV2200.wsdl',
+        $soapClient = new \SoapClient($this->container->getParameter('kek_ct_payment.wsdl'),
             [
                 'location' => 'http://localhost:8080',
                 'trace' => true,
@@ -91,7 +91,7 @@ class TransactionController extends Controller
 
         // acknowledge transaction
 
-        $soapClient = new \SoapClient('https://test.ctpaiement.com/ws2014/PaymentTransactionV2200.wsdl',
+        $soapClient = new \SoapClient($this->container->getParameter('kek_ct_payment.wsdl'),
             [
                 'location' => 'http://localhost:8080',
                 'trace' => true,
