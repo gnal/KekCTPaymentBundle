@@ -28,5 +28,6 @@ class KekCTPaymentExtension extends Extension
         $container->setParameter('kek_ct_payment.wsdl', $config['wsdl']);
         $container->setParameter('kek_ct_payment.merchant_number', $config['merchant_number']);
         $container->setParameter('kek_ct_payment.company_number', $config['company_number']);
+        $container->setParameter('kek_ct_payment.port', $config['port']);
     }
 }

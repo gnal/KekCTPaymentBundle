@@ -20,7 +20,7 @@ class TransactionController extends Controller
     {
         $soapClient = new \SoapClient($this->container->getParameter('kek_ct_payment.wsdl'),
             [
-                'location' => 'http://localhost:8080',
+                'location' => 'http://localhost:'.$this->container->getParameter('kek_ct_payment.port'),
                 'trace' => true,
                 'exceptions' => true,
             ]
@@ -69,7 +69,7 @@ class TransactionController extends Controller
 
         $soapClient = new \SoapClient($this->container->getParameter('kek_ct_payment.wsdl'),
             [
-                'location' => 'http://localhost:8080',
+                'location' => 'http://localhost:'.$this->container->getParameter('kek_ct_payment.port'),
                 'trace' => true,
                 'exceptions' => true,
             ]
@@ -96,7 +96,7 @@ class TransactionController extends Controller
 
         $soapClient = new \SoapClient($this->container->getParameter('kek_ct_payment.wsdl'),
             [
-                'location' => 'http://localhost:8080',
+                'location' => 'http://localhost:'.$this->container->getParameter('kek_ct_payment.port'),
                 'trace' => true,
                 'exceptions' => true,
             ]
