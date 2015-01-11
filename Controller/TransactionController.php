@@ -52,7 +52,7 @@ class TransactionController extends Controller
         } else {
             if ($this->get('kernel')->getEnvironment() === 'dev') {
                 die(var_dump($response));
-            else {
+            } else {
                 die('ctpayment step 1 failed');
             }
         }
