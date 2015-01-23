@@ -41,7 +41,7 @@ class TransactionController extends Controller
                 'operatorID' => '00000000',
                 'successURL' => $this->generateUrl('kek_ctpayment_transaction_step2', [], UrlGeneratorInterface::ABSOLUTE_URL),
                 'failureURL' => $this->generateUrl('kek_ctpayment_transaction_step2', [], UrlGeneratorInterface::ABSOLUTE_URL),
-                'eMail' => 'fangers@groupemsi.com',
+                'eMail' => '',
             ],
         ]);
 
