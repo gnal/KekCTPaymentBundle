@@ -28,8 +28,8 @@ class TransactionController extends Controller
 
         $response = $soapClient->__soapCall('redirectNewSession', [
             'RedirectNewSession' => [
-                'companyNumber' => $this->container->getParameter('kek_ct_payment.company_number'),
-                'merchantNumber' => $this->container->getParameter('kek_ct_payment.merchant_number'),
+                'companyNumber' => $this->getRequest()->query->get('company_number') ?: $this->container->getParameter('kek_ct_payment.company_number'),
+                'merchantNumber' => $this->getRequest()->query->get('merchant_number') ?: $this->container->getParameter('kek_ct_payment.merchant_number'),
                 'customerNumber' => '00000000',
                 'amount' => $this->getRequest()->query->get('amount'),
                 'billNumber' => $this->getRequest()->query->get('billNumber'),
