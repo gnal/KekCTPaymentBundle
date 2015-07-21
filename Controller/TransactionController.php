@@ -31,7 +31,7 @@ class TransactionController extends Controller
                 'companyNumber' => $this->getRequest()->query->get('company_number') ?: $this->container->getParameter('kek_ct_payment.company_number'),
                 'merchantNumber' => $this->getRequest()->query->get('merchant_number') ?: $this->container->getParameter('kek_ct_payment.merchant_number'),
                 'customerNumber' => '00000000',
-                'amount' => $this->getRequest()->query->get('amount'),
+                'amount' => $this->get('kek_ctpayment.utils.number_manipulator')->fixAmount($this->getRequest()->query->get('amount')),
                 'billNumber' => $this->getRequest()->query->get('billNumber'),
                 'originalBillNumber' => '            ',
                 'inputType' => 'I',
@@ -107,7 +107,7 @@ class TransactionController extends Controller
                 'transactionNumber' => $transactionParams->trxNumber,
             ],
         ]);
-
+        // ack = transaction verification?
         if ($ack->returnCode !== 'true') {
             die('transaction acknowledge failed');
         }
